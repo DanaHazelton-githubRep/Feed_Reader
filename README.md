@@ -1,4 +1,31 @@
-# Project Overview
+# Feed Reader Project
+
+## Table of Contents
+
+- [App Info](#appinfo)
+- [Run Instructions](#instructions)
+- [Rules of play](#rules)
+- [Contributing](#contributing)
+
+## **App info**
+- Code testing App built useing Jasmine, to ensure
+code functions are preforming as expected. This allows
+developer the ability modify code and be asured that changes didn't not affect other parts of the programs functionality.
+- Software -  javascript, html, css and [Jasmine]
+- Download and extract zip file or clone the repository to a Directory(folder) on local machine.
+
+## **Run Instructions**
+- Open the index.html file using the browser of choice.
+
+
+## **Resources**
+- Udacity FEWD - Object-Oriented Javascript
+- Udacity knowledge blogs
+- W3schools - http://www.w3schools.com
+- MDN web docs - https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
+- MDN web docs - https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+- The Stack-overflow community
+
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
 

@@ -8,11 +8,13 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
+
 $(function() {
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
+
     describe('RSS Feeds:', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -21,18 +23,18 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-         //Test Statement
+
+         //Test Statement - Are RSS feeds defined?
         it('RSS Feeds are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         //Test Statement
+         //Test Statement - Are URLs defined?
          it('Urls are defined', function() {
             for(let feed of allFeeds) {
                 expect(feed.url).toBeDefined();
@@ -44,7 +46,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         //Test Statement
+         //Test Statement - Are Names are defined?
          it('Names are defined', function() {
             for(let feed of allFeeds) {
                 expect(feed.name).toBeDefined();
@@ -52,7 +54,6 @@ $(function() {
             }
          });
     });
-
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The Menu:', function() {
@@ -62,9 +63,10 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+
          const menuHid = document.querySelector('body');
          const menuIcon = document.querySelector('.menu-icon-link');
-         //Test Statement
+         //Test Statement - Confirm that Menu is Hide initialy.
          it('Menu is hidden', function() {
             //const menuHid = document.querySelector('body');
             expect(menuHid.classList.contains('menu-hidden')).toBe(true);
@@ -75,12 +77,10 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-        //Test Statement
+        //Test Statement - When Clicked Menu Unhides or Hides.
           it('Menu on click hides/unhides', function() {
-            //const menuHid = document.querySelector('body');
-            //const menuIcon = document.querySelector('.menu-icon-link');
             menuIcon.click();
-            expect(menuHid.classList.contains('menu-hidden')).not.toBe(true);
+            expect(menuHid.classList.contains('menu-hidden')).toBe(false);
             menuIcon.click();
             expect(menuHid.classList.contains('menu-hidden')).not.toBe(false);
         });
@@ -96,13 +96,12 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
          const feedCont = document.querySelector('.feed');
-
+        //Handle Async Request
          beforeEach(function(done) {
             loadFeed(0, done);
          });
-         //Test Statement
+         //Test Statement - Confirm loadFeed() completes.
          it('LoadFeed completes', function() {
-            //const feedCont = document.querySelector('.feed');
             expect(feedCont.children.length > 0).toBe(true);
          });
     });
@@ -116,7 +115,7 @@ $(function() {
          */
          const newFeed = []
          const feedCont = document.querySelector('.feed');
-
+        //Handle Async Request
          beforeEach(function(done) {
             loadFeed(0);
             Array.from(feedCont.children).forEach(function(entry) {
@@ -124,7 +123,7 @@ $(function() {
             });
             loadFeed(1, done);
          });
-         //Test Statement
+         //Test Statement - Confirm feed content changes.
          it('Content actually changes', function() {
             Array.from(feedCont.children).forEach(function(entry,index) {
                 expect(entry.innerText === newFeed[index]).not.toBe(true);
