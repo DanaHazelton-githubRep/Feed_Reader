@@ -129,7 +129,7 @@ $(function() {
             loadFeed(1, done);
          });
          //Test Statement - Confirm next feed content changes.
-         it('Content actually changes', function() {
+         it('Content actually changes when new feed is loaded', function() {
             //create a array list then loop over the entrys and use
             // use index to check first feed to the new feed.
             Array.from(feedContainer.children).forEach(function(entry,index) {
