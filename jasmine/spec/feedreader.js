@@ -79,8 +79,10 @@ $(function() {
           */
         //Test Statement - When Clicked Menu Unhides or Hides.
           it('Menu on click hides/unhides', function() {
+            //On first click
             menuIcon.click();
             expect(menuHid.classList.contains('menu-hidden')).toBe(false);
+            //On second click
             menuIcon.click();
             expect(menuHid.classList.contains('menu-hidden')).not.toBe(false);
         });
@@ -95,14 +97,15 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         const feedCont = document.querySelector('.feed');
+         const feedContainer = document.querySelector('.feed');
         //Handle Async Request
          beforeEach(function(done) {
             loadFeed(0, done);
          });
          //Test Statement - Confirm loadFeed() completes.
          it('LoadFeed completes', function() {
-            expect(feedCont.children.length > 0).toBe(true);
+            //console.log(feedContainer.children);
+            expect(feedContainer.children).toBeDefined();
          });
     });
 
@@ -113,19 +116,25 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         const newFeed = []
-         const feedCont = document.querySelector('.feed');
+         const newFeed = []; // Stores feeds as they are loaded.
+         const feedContainer = document.querySelector('.feed');
         //Handle Async Request
          beforeEach(function(done) {
             loadFeed(0);
-            Array.from(feedCont.children).forEach(function(entry) {
+            //create a array list then loop over the entrys.
+            Array.from(feedContainer.children).forEach(function(entry) {
                 newFeed.push(entry.innerText);
+                //console.log(entry.innerText);
             });
             loadFeed(1, done);
          });
-         //Test Statement - Confirm feed content changes.
+         //Test Statement - Confirm next feed content changes.
          it('Content actually changes', function() {
-            Array.from(feedCont.children).forEach(function(entry,index) {
+            //create a array list then loop over the entrys and use
+            // use index to check first feed to the new feed.
+            Array.from(feedContainer.children).forEach(function(entry,index) {
+                //console.log(newFeed);
+                //console.log(entry.innerText,('vs'),newFeed[index]);
                 expect(entry.innerText === newFeed[index]).not.toBe(true);
             });
          });
