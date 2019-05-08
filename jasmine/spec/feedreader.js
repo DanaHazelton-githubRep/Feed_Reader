@@ -57,16 +57,19 @@ $(function() {
     /* Test suite named "Initial Entries" */
     describe('Initial Entries:', function() {
 
-         const feedContainer = document.querySelector('.feed');
-
          //Handle Async Request
          beforeEach(function(done) {
             loadFeed(0, done);
          });
-         //Test Statement - Confirm loadFeed() completes.
+
+         //const entry = document.querySelectorAll('.feed .entry');
+
+         //Test Statement - Confirm loadFeed() completes w/ at least
+         //one .entry feed.
          it('LoadFeed completes', function() {
-            //console.log(feedContainer.children);
-            expect(feedContainer.children.length).toBeGreaterThan(0);
+            const entry = document.querySelectorAll('.feed .entry');
+            console.log(entry);
+            expect(entry.length).toBeGreaterThan(0);
          });
     });
 
